@@ -10,9 +10,19 @@ def divide(a, b):
 
 import subprocess
 
+def add(a, b):
+    return a + b
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Tidak boleh bagi nol")
+    return a / b
+
 def run_command(cmd):
-    # penggunaan shell=True berbahaya (Command Injection)
+    # DIBERSIHKAN: Menghapus shell=True agar aman dari Command Injection
+    if isinstance(cmd, str):
+        cmd = cmd.split()
     result = subprocess.run(
-        cmd, shell=True, capture_output=True, text=True
+        cmd, capture_output=True, text=True
     )
     return result.stdout
