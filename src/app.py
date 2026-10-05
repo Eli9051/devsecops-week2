@@ -12,10 +12,7 @@ def divide(a, b):
 
 
 def run_command(cmd):
-    # DIBERSIHKAN: Menghapus shell=True dan menambah # nosec untuk Bandit
     if isinstance(cmd, str):
         cmd = cmd.split()
-    result = subprocess.run(
-        cmd, capture_output=True, text=True
-    )  # nosec
+    result = subprocess.run(cmd, capture_output=True, text=True)  # nosec
     return result.stdout
